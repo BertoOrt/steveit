@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  main
+    img(src='/images/logo.png' alt='steve it')
+    form(action='/' method='post')
+      input.form-control(type='text' name='question')
+      input.btn.btn-primary(type='submit' value='ask!')
