@@ -2,10 +2,15 @@ var express = require('express');
 var router = express.Router();
 var unirest = require('unirest');
 var twilio = require('../lib/twilio');
+var client = require('twilio')(process.env.TWILIO_SID, process.env.TWILIO_AUTH);
 
 
 router.get('/', function(req, res, next) {
-  res.render('index');
+  
+  client.messages.list({
+}, function(err, data) {
+	res.render('index', {title: "Steveit", message: data.messages})
+});
 });
 
 router.post('/', function(req, res, next) {

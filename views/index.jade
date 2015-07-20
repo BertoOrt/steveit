@@ -6,3 +6,11 @@ block content
     form(action='/' method='post')
       input.form-control(type='text' name='question')
       input.btn.btn-primary(type='submit' value='ask!')
+    //- for messages in message
+    //-   if (messages.direction === "inbound")
+    //-     .inbound
+    //-       p= messages.body
+    for messages in message
+      if (messages.direction === 'outbound-api')
+        .outbound 
+          p= messages.body
