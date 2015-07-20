@@ -9,13 +9,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
-  unirest.post('https://hooks.slack.com/services/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')
+  unirest.post('https://hooks.slack.com/services/'+process.env.UNKNOWN_TOKEN+'/'+process.env.SLACK_TOKEN)
   .send('payload={"text": "'+ req.body.question +'", "channel": "@sabrams86", "username": "steve it", "icon_emoji": ":trollface:"}')
   .end(function (response) {
     var newMessage = req.body.question;
     twilio.message(newMessage);
-
-  res.redirect('/');
+    res.redirect('/');
   });
 });
 
